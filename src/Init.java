@@ -234,8 +234,12 @@ public class Init {
 		}
 		if (c == 'b') {
 			return Color.BLUE;
-		} else {
+		}
+		if (c == 'i'){
 			return Color.MAGENTA;
+		}
+		else {
+			return Color.BLACK;
 		}
 	}
 	
