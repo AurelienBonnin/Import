@@ -80,7 +80,7 @@ public class Mov {
 			if(StdDraw.mousePressed()){
 				int clicx=(int) StdDraw.mouseX() /(Main.WINDOW_WIDTH / Init.size);
 				int clicy=(int) StdDraw.mouseY() /(Main.WINDOW_WIDTH / Init.size);
-				//System.out.println("XXX"+clicx+"   "+"YYY"+clicy);
+				//System.out.println("XXX"+StdDraw.mouseX()+"   "+"YYY"+StdDraw.mouseY());
 				aza = 0;
 				//int x=Init.reverseX[clicy];
 				//int y= clicx;
@@ -88,7 +88,7 @@ public class Mov {
 				if (-1<clicx && clicx<Init.size && -1<clicy && clicy<Init.size){
 					int x=Init.reverseX[clicy];
 					int y= clicx;
-					System.out.println("lourd");
+					//System.out.println("lourd");
 					for (int i = 0;i< Init.couleur.length;i++){
 						if(Init.plateau[x][y] == Init.couleur[i]){
 							aza++;
@@ -99,24 +99,26 @@ public class Mov {
 						if(a%2 == 0){
 							MouvJ1(couleurjchar,Init.players[0].getCap());
 							z=1;
-							System.out.println("lol1");
+							//System.out.println("lol1");
 						}
 						else{
 							MouvJ2(couleurjchar,Init.players[1].getCap());
 							z=0;
 							tourj = tourj + 1;
-							System.out.println("lol2");
+							//System.out.println("lol2");
 						}
-						System.out.println("lol3");
+						//System.out.println("lol3");
 						Init.players[0].setColor(Init.plateau[0][0]);
 						Init.players[1].setColor(Init.plateau[Init.size-1][Init.size-1]);
-						Init.miseMaj();
-						StdDraw.clear();
+						//Init.miseMaj();
+						StdDraw.setPenColor(StdDraw.WHITE);
+						StdDraw.filledRectangle((Main.WINDOW_WIDTH/2),Main.WINDOW_WIDTH+200,Main.WINDOW_WIDTH,102);
+						StdDraw.setPenColor(StdDraw.BLACK);
 						Init.affgraph();
 						String tourdraw = "Tour "+tourj;
 						StdDraw.text(92,Init.size*102+254,tourdraw);
 						String scoredraw ="Score: "+Init.players[0].getName()+"   "+Main.winj1+"-"+Main.winj2+"   "+Init.players[1].getName();
-						StdDraw.text((Init.size-4)*102+22,Init.size*102+254,scoredraw);
+						StdDraw.text((Init.size-4)*102+15,Init.size*102+254,scoredraw);
 						String jouedraw =Init.players[z].getName()+", à votre tour quelle couleur voulez-vous jouer ?";
 						StdDraw.text((Init.size/2)*102+51,Init.size*102+152,jouedraw);
 						a=a+1;

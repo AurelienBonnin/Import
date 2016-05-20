@@ -89,6 +89,15 @@ public class Init {
 		//Init.affcap();
 		
 		//System.out.println(players[0].getCap());
+		
+		/*String tourdraw = "Tour "+Mov.tourj;
+		StdDraw.text(92,Init.size*102+254,tourdraw);
+		String scoredraw ="Score: "+Init.players[0].getName()+"   "+Main.winj1+"-"+Main.winj2+"   "+Init.players[1].getName();
+		StdDraw.text((Init.size-4)*102+22,Init.size*102+254,scoredraw);
+		String jouedraw =Init.players[0].getName()+", à votre tour quelle couleur voulez-vous jouer ?";
+		StdDraw.text((Init.size/2)*102+51,Init.size*102+152,jouedraw);*/
+		
+		
 	}
 	public static void InitialisationGraph (){
 		Jeu(size);
@@ -118,8 +127,8 @@ public class Init {
 		
 		//System.out.println(players[0].getCap());
 		inverse(size);
-		affreverseX();
-		System.out.println("");
+		//affreverseX();
+		//System.out.println("");
 	}
 	public static void Jeu(int size) {
 		plateau = new char[size][size];

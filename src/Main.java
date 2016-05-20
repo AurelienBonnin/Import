@@ -105,7 +105,14 @@ public class Main {
 		StdDraw.setYscale(0, WINDOW_HEIGHT);
 		Init.InitialisationGraph();
 		Init.JMaj(Init.size);//
-		Init.miseMaj();//
+		//Init.miseMaj();//
+		Init.affgraph();
+		String tourdraw = "Tour "+Mov.tourj;
+		StdDraw.text(92,Init.size*102+254,tourdraw);
+		String scoredraw ="Score: "+Init.players[0].getName()+"   "+Main.winj1+"-"+Main.winj2+"   "+Init.players[1].getName();
+		StdDraw.text((Init.size-4)*102+22,Init.size*102+254,scoredraw);
+		String jouedraw =Init.players[0].getName()+", à votre tour quelle couleur voulez-vous jouer ?";
+		StdDraw.text((Init.size/2)*102+51,Init.size*102+152,jouedraw);
 		Init.affgraph();
 		//System.out.println(Init.plateau.length);
 		//System.out.println(Init.size);
@@ -114,24 +121,21 @@ public class Main {
 			Mov.Mouvementgraph();	
 		}
 		if (winj1>Init.getCapmax()){
-			//System.out.println("PLATEAU FINAL");
-			//System.out.println();
-			//Init.miseMaj();
-			//System.out.println();
-			//System.out.println("SCORE FINAL");
-			//System.out.println(Init.players[0].getName()+"   "+Main.winj1+"-"+Main.winj2+"   "+Init.players[1].getName());
-			//System.out.println("Bravo Vous avez gagné "+Init.players[0].getName()+",");
-			//System.out.println("vous avez capturé plus de la moitié des pions ! :)");
+			
+			StdDraw.filledRectangle(WINDOW_WIDTH/2, WINDOW_HEIGHT/2, WINDOW_WIDTH/3, WINDOW_HEIGHT/3);
+			StdDraw.setPenColor(StdDraw.WHITE);
+			StdDraw.filledRectangle(WINDOW_WIDTH/2, WINDOW_HEIGHT/2, (WINDOW_WIDTH/3)-10, (WINDOW_HEIGHT/3)-10);
+			StdDraw.setPenColor(StdDraw.BLACK);
+			String win1txt= "Bravo, "+Init.players[0].getName()+" a gagné !";
+			StdDraw.text(WINDOW_WIDTH/2, WINDOW_HEIGHT/2, win1txt);
 		}
 		if (winj2>Init.getCapmax()){
-			//System.out.println("PLATEAU FINAL");
-			//System.out.println();
-			//Init.miseMaj();
-			//System.out.println();
-			//System.out.println("SCORE FINAL");
-			//System.out.println(Init.players[0].getName()+"   "+Main.winj1+"-"+Main.winj2+"   "+Init.players[1].getName());
-			//System.out.println("Bravo Vous avez gagné "+Init.players[1].getName()+",");
-			//System.out.println("vous avez capturé plus de la moitié des pions ! :)");
+			StdDraw.filledRectangle(WINDOW_WIDTH/2, WINDOW_HEIGHT/2, WINDOW_WIDTH/3, WINDOW_HEIGHT/3);
+			StdDraw.setPenColor(StdDraw.WHITE);
+			StdDraw.filledRectangle(WINDOW_WIDTH/2, WINDOW_HEIGHT/2, (WINDOW_WIDTH/3)-10, (WINDOW_HEIGHT/3)-10);
+			StdDraw.setPenColor(StdDraw.BLACK);
+			String win2txt= "Bravo, "+Init.players[1].getName()+" a gagné !";
+			StdDraw.text(WINDOW_WIDTH/2, WINDOW_HEIGHT/2, win2txt);
 		}
 		//if (winj1==Init.getCapmax() && winj2==Init.getCapmax()){
 			//Init.miseMaj();
