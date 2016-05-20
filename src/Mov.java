@@ -1,5 +1,7 @@
 import java.util.Scanner;
 
+import edu.princeton.cs.introcs.StdDraw;
+
 public class Mov {
 	
 	static int tourj = 1;
@@ -55,6 +57,103 @@ public class Mov {
 				tourj = tourj + 1;
 			}
 			a=a+1;
+	}
+	
+	public static void Mouvementgraph(){
+		//Init.players[0].setColor(Init.plateau[0][0]);
+		//Init.players[1].setColor(Init.plateau[Init.size-1][Init.size-1]);
+		//System.out.println("lol "+Init.players[0].getColor());
+		//System.out.println("lol "+Init.players[1].getColor());
+			//String tourdraw = "Tour "+tourj;
+			//StdDraw.text(92,Init.size*102+254,tourdraw);
+			//System.out.println("----------Tour "+tourj+"----------");
+			//Init.miseMaj();
+			//String scoredraw ="Score: "+Init.players[0].getName()+"   "+Main.winj1+"-"+Main.winj2+"   "+Init.players[1].getName();
+			//StdDraw.text((Init.size-4)*102+22,Init.size*102+254,scoredraw);
+			//System.out.println("Score:");
+			//System.out.println(Init.players[0].getName()+"   "+Main.winj1+"-"+Main.winj2+"   "+Init.players[1].getName());
+			//Scanner scancouleurj = new Scanner(System.in);
+			//System.out.println();
+			//String jouedraw =Init.players[z].getName()+", à votre tour quelle couleur voulez-vous jouer ?";
+			//StdDraw.text((Init.size/2)*102+51,Init.size*102+152,jouedraw);
+			//System.out.println(Init.players[z].getName()+", à votre tour quelle couleur voulez vous jouer ?");
+			if(StdDraw.mousePressed()){
+				int clicx=(int) StdDraw.mouseX() /(Main.WINDOW_WIDTH / Init.size);
+				int clicy=(int) StdDraw.mouseY() /(Main.WINDOW_WIDTH / Init.size);
+				//System.out.println("XXX"+clicx+"   "+"YYY"+clicy);
+				aza = 0;
+				//int x=Init.reverseX[clicy];
+				//int y= clicx;
+				//System.out.println("X000X"+x+"-_-_-_-"+"Y000Y"+y);
+				if (-1<clicx && clicx<Init.size && -1<clicy && clicy<Init.size){
+					int x=Init.reverseX[clicy];
+					int y= clicx;
+					System.out.println("lourd");
+					for (int i = 0;i< Init.couleur.length;i++){
+						if(Init.plateau[x][y] == Init.couleur[i]){
+							aza++;
+						}
+					}
+					if (Init.plateau[x][y] != Init.players[1].getColor() && Init.plateau[x][y] != Init.players[0].getColor() && aza != 0){
+						couleurjchar=Init.plateau[x][y];
+						if(a%2 == 0){
+							MouvJ1(couleurjchar,Init.players[0].getCap());
+							z=1;
+							System.out.println("lol1");
+						}
+						else{
+							MouvJ2(couleurjchar,Init.players[1].getCap());
+							z=0;
+							tourj = tourj + 1;
+							System.out.println("lol2");
+						}
+						System.out.println("lol3");
+						Init.players[0].setColor(Init.plateau[0][0]);
+						Init.players[1].setColor(Init.plateau[Init.size-1][Init.size-1]);
+						Init.miseMaj();
+						StdDraw.clear();
+						Init.affgraph();
+						String tourdraw = "Tour "+tourj;
+						StdDraw.text(92,Init.size*102+254,tourdraw);
+						String scoredraw ="Score: "+Init.players[0].getName()+"   "+Main.winj1+"-"+Main.winj2+"   "+Init.players[1].getName();
+						StdDraw.text((Init.size-4)*102+22,Init.size*102+254,scoredraw);
+						String jouedraw =Init.players[z].getName()+", à votre tour quelle couleur voulez-vous jouer ?";
+						StdDraw.text((Init.size/2)*102+51,Init.size*102+152,jouedraw);
+						a=a+1;
+					}
+				}
+				/*for (int i = 0;i< Init.couleur.length;i++){
+					if(Init.plateau[x][y] == Init.couleur[i]){
+						aza++;
+					}
+				}
+				if (Init.plateau[x][y] != Init.players[1].getColor() && Init.plateau[x][y] != Init.players[0].getColor() && aza != 0){
+					couleurjchar=Init.plateau[x][y];
+					if(a%2 == 0){
+						MouvJ1(couleurjchar,Init.players[0].getCap());
+						z=1;
+						System.out.println("lol1");
+					}
+					else{
+						MouvJ2(couleurjchar,Init.players[1].getCap());
+						z=0;
+						tourj = tourj + 1;
+						System.out.println("lol2");
+					}
+					System.out.println("lol3");
+					Init.players[0].setColor(Init.plateau[0][0]);
+					Init.players[1].setColor(Init.plateau[Init.size-1][Init.size-1]);
+					StdDraw.clear();
+					Init.affgraph();
+					String tourdraw = "Tour "+tourj;
+					StdDraw.text(92,Init.size*102+254,tourdraw);
+					String scoredraw ="Score: "+Init.players[0].getName()+"   "+Main.winj1+"-"+Main.winj2+"   "+Init.players[1].getName();
+					StdDraw.text((Init.size-4)*102+22,Init.size*102+254,scoredraw);
+					String jouedraw =Init.players[z].getName()+", à votre tour quelle couleur voulez-vous jouer ?";
+					StdDraw.text((Init.size/2)*102+51,Init.size*102+152,jouedraw);
+					a=a+1;
+				}*/
+			}
 	}
 	
 	public static boolean Touche(int i, int j,int z){

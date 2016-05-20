@@ -10,7 +10,7 @@ public class Main {
 	
 	public static final int WINDOW_WIDTH = Init.size*102;
 	
-	public static final int WINDOW_HEIGHT = Init.size*102 + 100;
+	public static final int WINDOW_HEIGHT = Init.size*102 + 306;
 	
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
@@ -18,11 +18,12 @@ public class Main {
 	}
 	
 	public static void menu(){
+		//StdDraw.setCanvasSize(Init.size*51,Init.size*51);
 		StdDraw.setXscale(0, 100);
 		StdDraw.setYscale(0, 100);
 		
 		//
-		Font font = new Font("Calibri",0, 25);
+		Font font = new Font("Arial",0, 20);
 		StdDraw.setFont(font);
 		StdDraw.setPenColor(StdDraw.BLACK);
 		StdDraw.filledRectangle(50, 50, 20, 5);
@@ -103,10 +104,14 @@ public class Main {
 		StdDraw.setXscale(0, WINDOW_WIDTH);
 		StdDraw.setYscale(0, WINDOW_HEIGHT);
 		Init.InitialisationGraph();
+		Init.JMaj(Init.size);//
+		Init.miseMaj();//
 		Init.affgraph();
+		//System.out.println(Init.plateau.length);
+		//System.out.println(Init.size);
 		while (winj1<=Init.getCapmax() && winj2<=Init.getCapmax() ){
-			System.out.println();
-			Mov.Mouvement();	
+			//System.out.println("lol");
+			Mov.Mouvementgraph();	
 		}
 		if (winj1>Init.getCapmax()){
 			//System.out.println("PLATEAU FINAL");

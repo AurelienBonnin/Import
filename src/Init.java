@@ -6,6 +6,8 @@ import edu.princeton.cs.introcs.StdDraw;
 
 public class Init {
 	
+	//static int w = 0;
+	
 	static int capmax;
 	
 	static char[][] plateau;
@@ -17,6 +19,8 @@ public class Init {
 	static int size = 13;
 	
 	static char couleur[] = {'r','o','j','v','b','i'};
+	
+	static int[] reverseX;
 	
 	public static char[] getCouleur() {
 		return couleur;
@@ -99,17 +103,23 @@ public class Init {
 		players[1] = new Player("Player 2",plateau[size-1][size-1],plateaucap[size-1][size-1]);
 		
 
-		JMaj(size);
+		//JMaj(size);
 		
 		capmax = (int) ((size*size)/2);
 		
+		Init.players[0].setColor(Init.plateau[0][0]);
+		Init.players[1].setColor(Init.plateau[Init.size-1][Init.size-1]);
+		
 		Mov.MouvJ1(Init.plateau[0][0],Init.players[0].getCap());
 		Mov.MouvJ2(Init.plateau[Init.size-1][Init.size-1],Init.players[1].getCap());
-		System.out.println("JEU INITIALISÉ");
+		//System.out.println("JEU INITIALISÉ");
 		//System.out.println("Tour 1");
 		//Init.affcap();
 		
 		//System.out.println(players[0].getCap());
+		inverse(size);
+		affreverseX();
+		System.out.println("");
 	}
 	public static void Jeu(int size) {
 		plateau = new char[size][size];
@@ -206,12 +216,16 @@ public class Init {
 			for (int j = 0; j<size; j++) {
 				int semiWidth = CELL_WIDTH / 2;
 				int x = j * CELL_WIDTH + semiWidth;
-				System.out.println(i * CELL_WIDTH + semiWidth);
 				int y = i * CELL_WIDTH + semiWidth;
 				StdDraw.setPenColor(getColorFromChar(plateau[n][m]));
 				StdDraw.filledSquare(x, y, semiWidth);
 				StdDraw.setPenColor(Color.black);
 				StdDraw.square(x, y, semiWidth);
+				if (plateaucap[n][m]!=0){
+					String z = "" +plateaucap[n][m];
+					StdDraw.text(x, y, z);
+				}
+				//w++;
 				m++;
 			}
 			m=0;
@@ -219,6 +233,7 @@ public class Init {
 		}
 		n=0;
 	}
+	
 	public static Color getColorFromChar(char c) {
 		if (c == 'r') {
 			return Color.RED;
@@ -243,4 +258,18 @@ public class Init {
 		}
 	}
 	
+	public static void inverse(int size) {
+		int n = 0;
+		reverseX = new int[size];
+		for (int i = size-1; i>0; i--) {
+			reverseX[n]=i;
+			n++;
+		}
+	}
+	
+	public static void affreverseX(){
+		for(int i = 0; i < size; i++){
+	            System.out.print(reverseX[i] + "---");
+	    }
+	}	
 }
