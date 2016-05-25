@@ -25,7 +25,7 @@ public class Init {
 	public static char[] getCouleur() {
 		return couleur;
 	}
-	static Player[] players = new Player[2];
+	static Player[] players = new Player[4];
 	
 	public Player[] getPlayers() {
 		return players;
@@ -47,7 +47,7 @@ public class Init {
 		return Main.WINDOW_WIDTH / size;
 	}
 
-	public static void Initialisation (){
+	public static void Initialisation (int nbxP,int nbxIA){
 		Scanner scansize = new Scanner(System.in);
 		System.out.println("Taille de la grille ?");
 		while (!scansize.hasNextInt()) {
@@ -55,23 +55,149 @@ public class Init {
 			   scansize.nextLine();
 			}
 		size=scansize.nextInt();
-		
 		Jeu(size);
 		JCap(size);
 		
 		//Scanner scanname1 = new Scanner(System.in);
 		//System.out.println("Quel est le nom du joueur 1 ?");
 		//int name1=scanname1.nextInt();
+		if (nbxP == 2){
+			if (nbxIA == 2){
+				plateaucap[0][0]=1;
+				players[0] = new Player("IA 1",plateau[0][0],plateaucap[0][0]);
+				plateaucap[size-1][size-1]=2;
+				players[1] = new Player("IA 2",plateau[size-1][size-1],plateaucap[size-1][size-1]);
+				Mov.MouvJ1(Init.plateau[0][0],Init.players[0].getCap());
+				Mov.MouvJ2(Init.plateau[Init.size-1][Init.size-1],Init.players[1].getCap());
+			}
+			if (nbxIA == 1){
+				plateaucap[0][0]=1;
+				players[0] = new Player("Player 1",plateau[0][0],plateaucap[0][0]);
+				plateaucap[size-1][size-1]=2;
+				players[1] = new Player("IA 2",plateau[size-1][size-1],plateaucap[size-1][size-1]);
+				Mov.MouvJ1(Init.plateau[0][0],Init.players[0].getCap());
+				Mov.MouvJ2(Init.plateau[Init.size-1][Init.size-1],Init.players[1].getCap());
+			}
+			else{
+				plateaucap[0][0]=1;
+				players[0] = new Player("Player 1",plateau[0][0],plateaucap[0][0]);
+				plateaucap[size-1][size-1]=2;
+				players[1] = new Player("Player 2",plateau[size-1][size-1],plateaucap[size-1][size-1]);
+				Mov.MouvJ1(Init.plateau[0][0],Init.players[0].getCap());
+				Mov.MouvJ2(Init.plateau[Init.size-1][Init.size-1],Init.players[1].getCap());
+			}
+		}
+		if (nbxP == 3){
+			if(nbxIA == 3){
+				plateaucap[0][0]=1;
+				players[0] = new Player("IA 1",plateau[0][0],plateaucap[0][0]);
+				plateaucap[size-1][size-1]=2;
+				players[1] = new Player("IA 2",plateau[size-1][size-1],plateaucap[size-1][size-1]);
+				plateaucap[0][size-1]=3;
+				players[2] = new Player("IA 3",plateau[0][size-1],plateaucap[0][size-1]);
+				Mov.MouvJ1(Init.plateau[0][0],Init.players[0].getCap());
+				Mov.MouvJ2(Init.plateau[Init.size-1][Init.size-1],Init.players[1].getCap());
+				Mov.MouvJ1(Init.plateau[0][Init.size-1],Init.players[2].getCap());
+				
+			}
+			if(nbxIA == 2){
+				plateaucap[0][0]=1;
+				players[0] = new Player("Player 1",plateau[0][0],plateaucap[0][0]);
+				plateaucap[size-1][size-1]=2;
+				players[1] = new Player("IA 2",plateau[size-1][size-1],plateaucap[size-1][size-1]);
+				plateaucap[0][size-1]=3;
+				players[2] = new Player("IA 3",plateau[0][size-1],plateaucap[0][size-1]);
+				Mov.MouvJ1(Init.plateau[0][0],Init.players[0].getCap());
+				Mov.MouvJ2(Init.plateau[Init.size-1][Init.size-1],Init.players[1].getCap());
+				Mov.MouvJ1(Init.plateau[0][Init.size-1],Init.players[2].getCap());
+			}
+			if(nbxIA == 1){
+				plateaucap[0][0]=1;
+				players[0] = new Player("Player 1",plateau[0][0],plateaucap[0][0]);
+				plateaucap[size-1][size-1]=2;
+				players[1] = new Player("Player 2",plateau[size-1][size-1],plateaucap[size-1][size-1]);
+				plateaucap[0][size-1]=3;
+				players[2] = new Player("IA 3",plateau[0][size-1],plateaucap[0][size-1]);
+				Mov.MouvJ1(Init.plateau[0][0],Init.players[0].getCap());
+				Mov.MouvJ2(Init.plateau[Init.size-1][Init.size-1],Init.players[1].getCap());
+				Mov.MouvJ1(Init.plateau[0][Init.size-1],Init.players[2].getCap());
+			}
+			else{
+				plateaucap[0][0]=1;
+				players[0] = new Player("Player 1",plateau[0][0],plateaucap[0][0]);
+				plateaucap[size-1][size-1]=2;
+				players[1] = new Player("Player 2",plateau[size-1][size-1],plateaucap[size-1][size-1]);
+				plateaucap[0][size-1]=3;
+				players[2] = new Player("Player 3",plateau[0][size-1],plateaucap[0][size-1]);
+				Mov.MouvJ1(Init.plateau[0][0],Init.players[0].getCap());
+				Mov.MouvJ2(Init.plateau[Init.size-1][Init.size-1],Init.players[1].getCap());
+				Mov.MouvJ1(Init.plateau[0][Init.size-1],Init.players[2].getCap());
+			}
+		}
+		if (nbxP == 4){
+			if (nbxIA == 4){
+				plateaucap[0][0]=1;
+				players[0] = new Player("IA 1",plateau[0][0],plateaucap[0][0]);
+				plateaucap[size-1][size-1]=2;
+				players[1] = new Player("IA 2",plateau[size-1][size-1],plateaucap[size-1][size-1]);
+				plateaucap[0][size-1]=3;
+				players[2] = new Player("IA 3",plateau[0][size-1],plateaucap[0][size-1]);
+				plateaucap[size-1][0]=4;
+				players[3] = new Player("IA 4",plateau[size-1][0],plateaucap[size-1][0]);
+			}
+			if (nbxIA == 3){
+				plateaucap[0][0]=1;
+				players[0] = new Player("Player 1",plateau[0][0],plateaucap[0][0]);
+				plateaucap[size-1][size-1]=2;
+				players[1] = new Player("IA 2",plateau[size-1][size-1],plateaucap[size-1][size-1]);
+				plateaucap[0][size-1]=3;
+				players[2] = new Player("IA 3",plateau[0][size-1],plateaucap[0][size-1]);
+				plateaucap[size-1][0]=4;
+				players[3] = new Player("IA 4",plateau[size-1][0],plateaucap[size-1][0]);
+			}
+			if (nbxIA == 2){
+				plateaucap[0][0]=1;
+				players[0] = new Player("Player 1",plateau[0][0],plateaucap[0][0]);
+				plateaucap[size-1][size-1]=2;
+				players[1] = new Player("Player 2",plateau[size-1][size-1],plateaucap[size-1][size-1]);
+				plateaucap[0][size-1]=3;
+				players[2] = new Player("IA 3",plateau[0][size-1],plateaucap[0][size-1]);
+				plateaucap[size-1][0]=4;
+				players[3] = new Player("IA 4",plateau[size-1][0],plateaucap[size-1][0]);
+			}
+			if (nbxIA == 1){
+				plateaucap[0][0]=1;
+				players[0] = new Player("Player 1",plateau[0][0],plateaucap[0][0]);
+				plateaucap[size-1][size-1]=2;
+				players[1] = new Player("Player 2",plateau[size-1][size-1],plateaucap[size-1][size-1]);
+				plateaucap[0][size-1]=3;
+				players[2] = new Player("Player 3",plateau[0][size-1],plateaucap[0][size-1]);
+				plateaucap[size-1][0]=4;
+				players[3] = new Player("IA 4",plateau[size-1][0],plateaucap[size-1][0]);
+			}
+			else{
+				plateaucap[0][0]=1;
+				players[0] = new Player("Player 1",plateau[0][0],plateaucap[0][0]);
+				plateaucap[size-1][size-1]=2;
+				players[1] = new Player("Player 2",plateau[size-1][size-1],plateaucap[size-1][size-1]);
+				plateaucap[0][size-1]=3;
+				players[2] = new Player("Player 3",plateau[0][size-1],plateaucap[0][size-1]);
+				plateaucap[size-1][0]=4;
+				players[3] = new Player("Player 4",plateau[size-1][0],plateaucap[size-1][0]);
+			}
+		}
+		//plateaucap[0][0]=1;
+		//players[0] = new Player("Player 1",plateau[0][0],plateaucap[0][0]);
 		
-		plateaucap[0][0]=1;
-		players[0] = new Player("Player 1",plateau[0][0],plateaucap[0][0]);
+		
 		//System.out.println(plateau[0][0]);
 		//Scanner scanname2 = new Scanner(System.in);
 		//System.out.println("Quel est le nom du joueur 2 ?");
 		//int name2=scanname2.nextInt();
 		
-		plateaucap[size-1][size-1]=2;
-		players[1] = new Player("Player 2",plateau[size-1][size-1],plateaucap[size-1][size-1]);
+		
+		//plateaucap[size-1][size-1]=2;
+		//players[1] = new Player("Player 2",plateau[size-1][size-1],plateaucap[size-1][size-1]);
 		
 
 		JMaj(size);
