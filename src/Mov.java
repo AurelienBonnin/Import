@@ -433,7 +433,7 @@ public class Mov {
 	        }
 	    }
 	
-	public static void IAleatoire(){
+	public static void IAleatoire(int valueplayer){
 		int bonnecouleur = 0;
 		//char couleurvalide = 0;
 		while(bonnecouleur == 0){
@@ -453,7 +453,18 @@ public class Mov {
 			System.out.println("5lol5");
 		}
 		System.out.println("Lolilol");
-		MouvJ2(couleurjchar,Init.players[1].getCap());
+		if (valueplayer == 1){
+			MouvJ1(couleurjchar,Init.players[0].getCap());
+		}
+		if (valueplayer == 2){
+			MouvJ2(couleurjchar,Init.players[1].getCap());
+		}
+		if (valueplayer == 3){
+			MouvJ3(couleurjchar,Init.players[2].getCap());
+		}
+		if (valueplayer == 4){
+			MouvJ4(couleurjchar,Init.players[3].getCap());
+		}
 		Init.affgraph();
 	}
 	
