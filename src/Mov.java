@@ -7,7 +7,7 @@ public class Mov {
 	
 	static int tourj = 1;
 	
-	private static int z = 0;
+	static int z = 0;
 	
 	private static int a = 0;
 	
@@ -168,7 +168,6 @@ public class Mov {
 	///
 	public static void fgraph1vsIA(){
 		int tourjoue = 0;
-		if(a%2 == 0){
 		while(tourjoue==0){
 			if(StdDraw.mousePressed()){
 				int clicx=(int) StdDraw.mouseX() /(Main.WINDOW_WIDTH / Init.size);
@@ -191,22 +190,21 @@ public class Mov {
 							couleurjchar=Init.plateau[x][y];
 							MouvJ1(couleurjchar,Init.players[0].getCap());
 							z=1;
-							System.out.println("lol1");
+							//System.out.println("lol1");
 							tourjoue=1;
 							}
 					}
 				}
 		}
-		}
-		else{
+	
 							//MouvJ2(couleurjchar,Init.players[1].getCap());
-							z=0;
+							/*z=0;
 							tourj = tourj + 1;
 							StdDraw.setPenColor(StdDraw.BLACK);
 							String tourdraw = "Tour "+tourj;
 							StdDraw.text(92,Init.size*102+254,tourdraw);
 							System.out.println("lol2");
-						}
+	
 						System.out.println("lol3");
 						Init.players[0].setColor(Init.plateau[0][0]);
 						Init.players[1].setColor(Init.plateau[Init.size-1][Init.size-1]);
@@ -215,14 +213,40 @@ public class Mov {
 						StdDraw.filledRectangle((Main.WINDOW_WIDTH/2),Main.WINDOW_WIDTH+200,Main.WINDOW_WIDTH,102);
 						StdDraw.setPenColor(StdDraw.BLACK);
 						Init.affgraph();
-						String tourdraw = "Tour "+tourj;
+						//String tourdraw = "Tour "+tourj;
 						StdDraw.text(92,Init.size*102+254,tourdraw);
 						String scoredraw ="Score: "+Init.players[0].getName()+"   "+Main.winj1+"-"+Main.winj2+"   "+Init.players[1].getName();
 						StdDraw.text((Init.size-4)*102+15,Init.size*102+254,scoredraw);
 						String jouedraw =Init.players[z].getName()+", à votre tour quelle couleur voulez-vous jouer ?";
-						StdDraw.text((Init.size/2)*102+51,Init.size*102+152,jouedraw);
-						a=a+1;
+						StdDraw.text((Init.size/2)*102+51,Init.size*102+152,jouedraw);*/
 					}
+
+	///
+	///
+	///
+	public static void afficherscore(){
+		StdDraw.setPenColor(StdDraw.BLACK);
+		String tourdraw = "Tour "+tourj;
+		StdDraw.text(92,Init.size*102+254,tourdraw);
+		System.out.println("lol2");
+
+		System.out.println("lol3");
+		Init.players[0].setColor(Init.plateau[0][0]);
+		Init.players[1].setColor(Init.plateau[Init.size-1][Init.size-1]);
+	
+		StdDraw.setPenColor(StdDraw.WHITE);
+		StdDraw.filledRectangle((Main.WINDOW_WIDTH/2),Main.WINDOW_WIDTH+200,Main.WINDOW_WIDTH,102);
+		StdDraw.setPenColor(StdDraw.BLACK);
+		Init.affgraph();
+	
+		StdDraw.text(92,Init.size*102+254,tourdraw);
+		String scoredraw ="Score: "+Init.players[0].getName()+"   "+Main.winj1+"-"+Main.winj2+"   "+Init.players[1].getName();
+		StdDraw.text((Init.size-4)*102+15,Init.size*102+254,scoredraw);
+		String jouedraw =Init.players[z].getName()+", à votre tour quelle couleur voulez-vous jouer ?";
+		StdDraw.text((Init.size/2)*102+51,Init.size*102+152,jouedraw);
+	}
+	///
+	///
 	///
 	
 	public static boolean Touche(int i, int j,int z){
@@ -341,12 +365,12 @@ public class Mov {
 				System.out.println(couleurvalide);
 			}
 			else{
-				bonnecouleur =0;
+				bonnecouleur = 0;
 			}
 			System.out.println("5lol5");
 		}
 		System.out.println("Lolilol");
-		MouvJ1(couleurjchar,Init.players[1].getCap());
+		MouvJ2(couleurjchar,Init.players[1].getCap());
 		Init.affgraph();
 	}
 	

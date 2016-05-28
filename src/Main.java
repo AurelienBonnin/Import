@@ -173,8 +173,15 @@ public class Main {
 		//System.out.println(Init.size);
 		while (winj1<=Init.getCapmax() && winj2<=Init.getCapmax() ){
 			//System.out.println("lol");
+
+			Mov.z=0;
 			Mov.fgraph1vsIA();
+			Mov.afficherscore();
+			Mov.z=1;
 			Mov.IAleatoire();
+			Mov.tourj ++;
+			Mov.afficherscore();
+			System.out.println(winj1);
 		}
 		if (winj1>Init.getCapmax()){
 			
