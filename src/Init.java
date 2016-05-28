@@ -22,6 +22,8 @@ public class Init {
 	
 	static int[] reverseX;
 	
+	static int nombredejoueurs = 2;
+	
 	public static char[] getCouleur() {
 		return couleur;
 	}
@@ -47,17 +49,25 @@ public class Init {
 		return Main.WINDOW_WIDTH / size;
 	}
 
-	public static void Initialisation (int nbxP,int nbxIA){
-		Scanner scansize = new Scanner(System.in);
-		System.out.println("Taille de la grille ?");
-		while (!scansize.hasNextInt()) {
-			   System.out.println("Veuillez rentrer un entier s'il vous plaît !");
-			   scansize.nextLine();
-			}
-		size=scansize.nextInt();
-		Jeu(size);
-		JCap(size);
+	public static void Initialisation (int CouG,int nbxP,int nbxIA){
 		
+		if (CouG == 0){
+			Scanner scansize = new Scanner(System.in);
+			System.out.println("Taille de la grille ?");
+			while (!scansize.hasNextInt()) {
+				System.out.println("Veuillez rentrer un entier s'il vous plaît !");
+				scansize.nextLine();
+			}
+			size=scansize.nextInt();
+			Jeu(size);
+			JCap(size);
+		}
+		if (CouG == 1){///Mode Graph
+			Jeu(size);
+			JCap(size);
+			
+			inverse(size);
+		}
 		//Scanner scanname1 = new Scanner(System.in);
 		//System.out.println("Quel est le nom du joueur 1 ?");
 		//int name1=scanname1.nextInt();
@@ -67,25 +77,21 @@ public class Init {
 				players[0] = new Player("IA 1",plateau[0][0],plateaucap[0][0]);
 				plateaucap[size-1][size-1]=2;
 				players[1] = new Player("IA 2",plateau[size-1][size-1],plateaucap[size-1][size-1]);
-				Mov.MouvJ1(Init.plateau[0][0],Init.players[0].getCap());
-				Mov.MouvJ2(Init.plateau[Init.size-1][Init.size-1],Init.players[1].getCap());
 			}
 			if (nbxIA == 1){
 				plateaucap[0][0]=1;
 				players[0] = new Player("Player 1",plateau[0][0],plateaucap[0][0]);
 				plateaucap[size-1][size-1]=2;
 				players[1] = new Player("IA 2",plateau[size-1][size-1],plateaucap[size-1][size-1]);
-				Mov.MouvJ1(Init.plateau[0][0],Init.players[0].getCap());
-				Mov.MouvJ2(Init.plateau[Init.size-1][Init.size-1],Init.players[1].getCap());
 			}
 			else{
 				plateaucap[0][0]=1;
 				players[0] = new Player("Player 1",plateau[0][0],plateaucap[0][0]);
 				plateaucap[size-1][size-1]=2;
 				players[1] = new Player("Player 2",plateau[size-1][size-1],plateaucap[size-1][size-1]);
-				Mov.MouvJ1(Init.plateau[0][0],Init.players[0].getCap());
-				Mov.MouvJ2(Init.plateau[Init.size-1][Init.size-1],Init.players[1].getCap());
 			}
+			Mov.MouvJ1(Init.plateau[0][0],Init.players[0].getCap());
+			Mov.MouvJ2(Init.plateau[Init.size-1][Init.size-1],Init.players[1].getCap());
 		}
 		if (nbxP == 3){
 			if(nbxIA == 3){
@@ -95,9 +101,6 @@ public class Init {
 				players[1] = new Player("IA 2",plateau[size-1][size-1],plateaucap[size-1][size-1]);
 				plateaucap[0][size-1]=3;
 				players[2] = new Player("IA 3",plateau[0][size-1],plateaucap[0][size-1]);
-				Mov.MouvJ1(Init.plateau[0][0],Init.players[0].getCap());
-				Mov.MouvJ2(Init.plateau[Init.size-1][Init.size-1],Init.players[1].getCap());
-				Mov.MouvJ1(Init.plateau[0][Init.size-1],Init.players[2].getCap());
 				
 			}
 			if(nbxIA == 2){
@@ -107,9 +110,6 @@ public class Init {
 				players[1] = new Player("IA 2",plateau[size-1][size-1],plateaucap[size-1][size-1]);
 				plateaucap[0][size-1]=3;
 				players[2] = new Player("IA 3",plateau[0][size-1],plateaucap[0][size-1]);
-				Mov.MouvJ1(Init.plateau[0][0],Init.players[0].getCap());
-				Mov.MouvJ2(Init.plateau[Init.size-1][Init.size-1],Init.players[1].getCap());
-				Mov.MouvJ1(Init.plateau[0][Init.size-1],Init.players[2].getCap());
 			}
 			if(nbxIA == 1){
 				plateaucap[0][0]=1;
@@ -118,9 +118,6 @@ public class Init {
 				players[1] = new Player("Player 2",plateau[size-1][size-1],plateaucap[size-1][size-1]);
 				plateaucap[0][size-1]=3;
 				players[2] = new Player("IA 3",plateau[0][size-1],plateaucap[0][size-1]);
-				Mov.MouvJ1(Init.plateau[0][0],Init.players[0].getCap());
-				Mov.MouvJ2(Init.plateau[Init.size-1][Init.size-1],Init.players[1].getCap());
-				Mov.MouvJ1(Init.plateau[0][Init.size-1],Init.players[2].getCap());
 			}
 			else{
 				plateaucap[0][0]=1;
@@ -129,10 +126,10 @@ public class Init {
 				players[1] = new Player("Player 2",plateau[size-1][size-1],plateaucap[size-1][size-1]);
 				plateaucap[0][size-1]=3;
 				players[2] = new Player("Player 3",plateau[0][size-1],plateaucap[0][size-1]);
-				Mov.MouvJ1(Init.plateau[0][0],Init.players[0].getCap());
-				Mov.MouvJ2(Init.plateau[Init.size-1][Init.size-1],Init.players[1].getCap());
-				Mov.MouvJ1(Init.plateau[0][Init.size-1],Init.players[2].getCap());
 			}
+			Mov.MouvJ1(Init.plateau[0][0],Init.players[0].getCap());
+			Mov.MouvJ2(Init.plateau[Init.size-1][Init.size-1],Init.players[1].getCap());
+			Mov.MouvJ3(Init.plateau[0][Init.size-1],Init.players[2].getCap());
 		}
 		if (nbxP == 4){
 			if (nbxIA == 4){
@@ -185,10 +182,14 @@ public class Init {
 				plateaucap[size-1][0]=4;
 				players[3] = new Player("Player 4",plateau[size-1][0],plateaucap[size-1][0]);
 			}
+			Mov.MouvJ1(Init.plateau[0][0],Init.players[0].getCap());
+			Mov.MouvJ2(Init.plateau[Init.size-1][Init.size-1],Init.players[1].getCap());
+			Mov.MouvJ3(Init.plateau[0][Init.size-1],Init.players[2].getCap());
+			Mov.MouvJ4(Init.plateau[Init.size-1][0],Init.players[3].getCap());
 		}
 		//plateaucap[0][0]=1;
 		//players[0] = new Player("Player 1",plateau[0][0],plateaucap[0][0]);
-		
+		System.out.println(players[1].getName());
 		
 		//System.out.println(plateau[0][0]);
 		//Scanner scanname2 = new Scanner(System.in);
@@ -208,8 +209,8 @@ public class Init {
 		//System.out.println(players[0].getName());
 		//System.out.println(players[1].getName());
 		
-		Mov.MouvJ1(Init.plateau[0][0],Init.players[0].getCap());
-		Mov.MouvJ2(Init.plateau[Init.size-1][Init.size-1],Init.players[1].getCap());
+		//Mov.MouvJ1(Init.plateau[0][0],Init.players[0].getCap());
+		//Mov.MouvJ2(Init.plateau[Init.size-1][Init.size-1],Init.players[1].getCap());
 		System.out.println("JEU INITIALISÉ");
 		//System.out.println("Tour 1");
 		//Init.affcap();
@@ -267,6 +268,14 @@ public class Init {
 		while(plateau[0][0]==plateau[size-1][size-1]){
 			Random r = new Random();
 			plateau[size-1][size-1]= couleur[r.nextInt(6)];
+		}
+		while(plateau[0][0]==plateau[0][size-1]||plateau[size-1][size-1]==plateau[0][size-1]){
+			Random r = new Random();
+			plateau[0][size-1]= couleur[r.nextInt(6)];
+		}
+		while(plateau[0][0]==plateau[size-1][0]||plateau[size-1][size-1]==plateau[size-1][0]||plateau[0][size-1]==plateau[size-1][0]){
+			Random r = new Random();
+			plateau[size-1][0]= couleur[r.nextInt(6)];
 		}
 	}
 	

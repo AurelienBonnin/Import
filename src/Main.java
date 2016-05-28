@@ -8,6 +8,10 @@ public class Main {
 
 	static int winj2 = 0;
 	
+	static int winj3 = 0;
+	
+	static int winj4 = 0;
+	
 	public static final int WINDOW_WIDTH = Init.size*102;
 	
 	public static final int WINDOW_HEIGHT = Init.size*102 + 306;
@@ -44,9 +48,13 @@ public class Main {
 					StdDraw.setPenColor(StdDraw.WHITE);
 					StdDraw.text(80, 70, "Graph 2J");
 					StdDraw.setPenColor(StdDraw.BLACK);
+					StdDraw.filledRectangle(80, 50, 20, 5);
+					StdDraw.setPenColor(StdDraw.WHITE);
+					StdDraw.text(80, 50, "1J VS IA ");
+					StdDraw.setPenColor(StdDraw.BLACK);
 					StdDraw.filledRectangle(20, 50, 20, 5);
 					StdDraw.setPenColor(StdDraw.WHITE);
-					StdDraw.text(20, 50, "Console 3J");
+					StdDraw.text(20, 50, "4J");
 					while(true){
 						if (StdDraw.mousePressed()){
 							x=StdDraw.mouseX();
@@ -57,8 +65,11 @@ public class Main {
 							if(x > 60 && x < 100 && y > 65 && y < 75){
 								graph1vs1();
 							}
-							if(x > 0 && x < 40 && y > 45 && y < 55){
+							if(x > 60 && x < 100 && y > 45 && y < 55){
 								graph1vsIA();
+							}
+							if(x > 0 && x < 40 && y > 45 && y < 55){
+								test4j();
 							}
 						}
 					}
@@ -72,7 +83,7 @@ public class Main {
 		StdDraw.setPenColor(StdDraw.BLACK);
 		StdDraw.text(50, 60, "Le jeu est chargé dans la console");
 		StdDraw.text(50, 50, "Cependant merci de ne pas fermer cette fenêtre");
-		Init.Initialisation(2,0);
+		Init.Initialisation(0,2,0);
 		while (winj1<=Init.getCapmax() && winj2<=Init.getCapmax() ){
 			System.out.println();
 			Mov.Mouvement();	
@@ -158,7 +169,8 @@ public class Main {
 		StdDraw.clear();
 		StdDraw.setXscale(0, WINDOW_WIDTH);
 		StdDraw.setYscale(0, WINDOW_HEIGHT);
-		Init.InitialisationGraph();
+		Init.Initialisation(1, 2, 1);
+		//Init.InitialisationGraph();
 		Init.JMaj(Init.size);//
 		//Init.miseMaj();//
 		Init.affgraph();
@@ -202,12 +214,45 @@ public class Main {
 			StdDraw.text(WINDOW_WIDTH/2, WINDOW_HEIGHT/2, win2txt);
 		}
 	}
+	////
+	public static void test4j(){/////faire condition de fin 
+		StdDraw.clear();
+		StdDraw.setXscale(0, WINDOW_WIDTH);
+		StdDraw.setYscale(0, WINDOW_HEIGHT);
+		Init.nombredejoueurs = 4;
+		Init.Initialisation(1,Init.nombredejoueurs, 0);
+		Init.affgraph();
+		String tourdraw = "Tour "+Mov.tourj;
+		StdDraw.text(92,Init.size*102+254,tourdraw);
+		String scoredraw ="Score: "+Init.players[0].getName()+"   "+Main.winj1+"-"+Main.winj2+"   "+Init.players[1].getName();
+		StdDraw.text((Init.size-4)*102+22,Init.size*102+254,scoredraw);
+		String jouedraw =Init.players[0].getName()+", à votre tour quelle couleur voulez-vous jouer ?";
+		StdDraw.text((Init.size/2)*102+51,Init.size*102+152,jouedraw);
+		while(true){
+			Mov.z=0;
+			Mov.afficherscore();
+			Mov.Mouvementgraphhumain(Mov.z);
+			Mov.z=1;
+			Mov.afficherscore();
+			Mov.Mouvementgraphhumain(Mov.z);
+			Mov.z=2;
+			Mov.afficherscore();
+			Mov.Mouvementgraphhumain(Mov.z);
+			Mov.z=3;
+			Mov.afficherscore();
+			Mov.Mouvementgraphhumain(Mov.z);
+			
+			Mov.tourj ++;
+		}
+	}
+	
+	////////////////////////////////
 	public static void console3J(){
 		StdDraw.clear();
 		StdDraw.setPenColor(StdDraw.BLACK);
 		StdDraw.text(50, 60, "Le jeu est chargé dans la console");
 		StdDraw.text(50, 50, "Cependant merci de ne pas fermer cette fenêtre");
-		Init.Initialisation(3,0);
+		Init.Initialisation(0,3,0);
 		while (winj1<=Init.getCapmax() && winj2<=Init.getCapmax() ){
 			System.out.println();
 			Mov.Mouvement();	
