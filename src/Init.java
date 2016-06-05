@@ -189,7 +189,14 @@ public class Init {
 		}
 		//plateaucap[0][0]=1;
 		//players[0] = new Player("Player 1",plateau[0][0],plateaucap[0][0]);
+		
+		/*
+		System.out.println(players[0].getName());
 		System.out.println(players[1].getName());
+		System.out.println(players[2].getName());
+		System.out.println(players[3].getName());
+		*/
+		
 		
 		//System.out.println(plateau[0][0]);
 		//Scanner scanname2 = new Scanner(System.in);

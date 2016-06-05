@@ -12,6 +12,10 @@ public class Main {
 	
 	static int winj4 = 0;
 	
+	static int caselibre = 0;
+	
+	static String nomdujoueur; 
+	
 	public static final int WINDOW_WIDTH = Init.size*102;
 	
 	public static final int WINDOW_HEIGHT = Init.size*102 + 306;
@@ -54,7 +58,11 @@ public class Main {
 					StdDraw.setPenColor(StdDraw.BLACK);
 					StdDraw.filledRectangle(20, 50, 20, 5);
 					StdDraw.setPenColor(StdDraw.WHITE);
-					StdDraw.text(20, 50, "4J");
+					StdDraw.text(20, 50, "Graph 4J");
+					StdDraw.setPenColor(StdDraw.BLACK);
+					StdDraw.filledRectangle(20, 30, 20, 5);
+					StdDraw.setPenColor(StdDraw.WHITE);
+					StdDraw.text(20, 300, "Graph 3J");
 					StdDraw.setPenColor(StdDraw.BLACK);
 					StdDraw.filledRectangle(80, 30, 20, 5);
 					StdDraw.setPenColor(StdDraw.WHITE);
@@ -73,10 +81,13 @@ public class Main {
 								graph1vsIA();
 							}
 							if(x > 0 && x < 40 && y > 45 && y < 55){
-								test4j();
+								test4j(4);
 							}
-							if (x > 60 && x < 100 && y > 35 && y < 45){
+							if (x > 60 && x < 100 && y > 25 && y < 35){
 								graphIAvsIA();
+							}
+							if (x > 0 && x < 40 && y > 25 && y < 35){
+								Graph3j();
 							}
 						}
 					}
@@ -143,7 +154,8 @@ public class Main {
 		//System.out.println(Init.size);
 		while (winj1<=Init.getCapmax() && winj2<=Init.getCapmax() ){
 			//System.out.println("lol");
-			Mov.Mouvementgraph();	
+			Mov.Mouvementgraph();
+			Mov.score();
 		}
 		if (winj1>Init.getCapmax()){
 			
@@ -271,11 +283,74 @@ public class Main {
 		}
 	}
 	////
-	public static void test4j(){/////faire condition de fin 
+	public static void test4j(int nbxjoueur){/////faire condition de fin 
 		StdDraw.clear();
 		StdDraw.setXscale(0, WINDOW_WIDTH);
 		StdDraw.setYscale(0, WINDOW_HEIGHT);
 		Init.nombredejoueurs = 4;
+		Init.Initialisation(1,Init.nombredejoueurs, 0);
+		Init.affgraph();
+		String tourdraw = "Tour "+Mov.tourj;
+		StdDraw.text(92,Init.size*102+254,tourdraw);
+		String scoredraw ="Score: "+Init.players[0].getName()+"   "+Main.winj1+"-"+Main.winj2+"   "+Init.players[1].getName();
+		StdDraw.text((Init.size-4)*102+22,Init.size*102+254,scoredraw);
+		String jouedraw =Init.players[0].getName()+", à votre tour quelle couleur voulez-vous jouer ?";
+		StdDraw.text((Init.size/2)*102+51,Init.size*102+152,jouedraw);
+		Mov.score();
+		while(Mov.premier<=Mov.deuxieme+Main.caselibre&&nbxjoueur!=Mov.nbxcouleurdispo){
+			Mov.z=0;
+			Mov.afficherscore();
+			Mov.Mouvementgraphhumain(Mov.z);
+			Mov.score();
+			Mov.z=1;
+			Mov.afficherscore();
+			Mov.Mouvementgraphhumain(Mov.z);
+			Mov.score();
+			Mov.z=2;
+			Mov.afficherscore();
+			Mov.Mouvementgraphhumain(Mov.z);
+			Mov.score();
+			Mov.z=3;
+			Mov.afficherscore();
+			Mov.Mouvementgraphhumain(Mov.z);
+			Mov.score();
+			
+			Mov.tourj ++;
+		}
+		Mov.afficherscore();
+		System.out.println("woupi");
+		StdDraw.filledRectangle(WINDOW_WIDTH/2, WINDOW_HEIGHT/2, WINDOW_WIDTH/3, WINDOW_HEIGHT/3);
+		StdDraw.setPenColor(StdDraw.WHITE);
+		StdDraw.filledRectangle(WINDOW_WIDTH/2, WINDOW_HEIGHT/2, (WINDOW_WIDTH/3)-10, (WINDOW_HEIGHT/3)-10);
+		StdDraw.setPenColor(StdDraw.BLACK);
+		//String win1txt= "Bravo, "+nomdujoueur+" a gagné !";
+		System.out.println("Preum's "+Mov.premier);
+		System.out.println(winj1);
+		System.out.println(winj2);
+		System.out.println(winj3);
+		System.out.println(winj4);
+		if(Mov.premier==winj1){
+			nomdujoueur=Init.players[0].getName();
+		}
+		if(Mov.premier==winj2){
+			nomdujoueur=Init.players[1].getName();
+		}
+		if(Mov.premier==winj3){
+			nomdujoueur=Init.players[2].getName();
+		}
+		if(Mov.premier==winj4){
+			nomdujoueur=Init.players[3].getName();
+		}
+		String win1txt= "Bravo, "+nomdujoueur+" a gagné !";
+		StdDraw.text(WINDOW_WIDTH/2, WINDOW_HEIGHT/2, win1txt);
+	}
+	
+	
+	public static void Graph3j(){/////faire condition de fin 
+		StdDraw.clear();
+		StdDraw.setXscale(0, WINDOW_WIDTH);
+		StdDraw.setYscale(0, WINDOW_HEIGHT);
+		Init.nombredejoueurs = 3;
 		Init.Initialisation(1,Init.nombredejoueurs, 0);
 		Init.affgraph();
 		String tourdraw = "Tour "+Mov.tourj;
@@ -296,11 +371,12 @@ public class Main {
 			Mov.Mouvementgraphhumain(Mov.z);
 			Mov.z=3;
 			Mov.afficherscore();
-			Mov.Mouvementgraphhumain(Mov.z);
 			
 			Mov.tourj ++;
 		}
 	}
+	
+	
 	
 	////////////////////////////////
 	public static void console3J(){

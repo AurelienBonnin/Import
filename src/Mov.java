@@ -1,3 +1,4 @@
+import java.util.Arrays;
 import java.util.Random;
 import java.util.Scanner;
 
@@ -16,6 +17,16 @@ public class Mov {
 	private static char couleurjchar=' ';
 	
 	private static int aza;
+	
+	static int premier;
+	
+	static int deuxieme;
+	
+	static int couleurdispo[]={0,0,0,0,0,0};
+	
+	static int nbxcouleurdisparu;
+	
+	static int nbxcouleurdispo;
 	
 	public static void Mouvement(){
 		Init.players[0].setColor(Init.plateau[0][0]);
@@ -219,6 +230,68 @@ public class Mov {
 							aza++;
 						}
 					}
+					if (Init.nombredejoueurs==2){
+						if (Init.plateau[x][y] != Init.players[1].getColor() && Init.plateau[x][y] != Init.players[0].getColor() && aza != 0){
+							couleurjchar=Init.plateau[x][y];
+							if(nbdujoueur == 0){
+								MouvJ1(couleurjchar,Init.players[0].getCap());
+							}
+							if(nbdujoueur == 1){
+								MouvJ2(couleurjchar,Init.players[1].getCap());
+							}
+							if(nbdujoueur == 2){
+								MouvJ3(couleurjchar,Init.players[2].getCap());
+							}
+							if(nbdujoueur == 3){
+								MouvJ4(couleurjchar,Init.players[3].getCap());
+							}
+							//MouvJ1(couleurjchar,Init.players[0].getCap());
+							//System.out.println("lol1");
+							tourjoue=1;
+							}
+					}
+					if (Init.nombredejoueurs==3){
+						if (Init.plateau[x][y] != Init.players[1].getColor() && Init.plateau[x][y] != Init.players[0].getColor()&& Init.plateau[x][y] != Init.players[2].getColor() && aza != 0){
+							couleurjchar=Init.plateau[x][y];
+							if(nbdujoueur == 0){
+								MouvJ1(couleurjchar,Init.players[0].getCap());
+							}
+							if(nbdujoueur == 1){
+								MouvJ2(couleurjchar,Init.players[1].getCap());
+							}
+							if(nbdujoueur == 2){
+								MouvJ3(couleurjchar,Init.players[2].getCap());
+							}
+							if(nbdujoueur == 3){
+								MouvJ4(couleurjchar,Init.players[3].getCap());
+							}
+							//MouvJ1(couleurjchar,Init.players[0].getCap());
+							//System.out.println("lol1");
+							tourjoue=1;
+							}
+					}
+					if (Init.nombredejoueurs==4){
+						if (Init.plateau[x][y] != Init.players[1].getColor() && Init.plateau[x][y] != Init.players[0].getColor()&& Init.plateau[x][y] != Init.players[2].getColor() && Init.plateau[x][y] != Init.players[3].getColor() && aza != 0){
+							couleurjchar=Init.plateau[x][y];
+							if(nbdujoueur == 0){
+								MouvJ1(couleurjchar,Init.players[0].getCap());
+							}
+							if(nbdujoueur == 1){
+								MouvJ2(couleurjchar,Init.players[1].getCap());
+							}
+							if(nbdujoueur == 2){
+								MouvJ3(couleurjchar,Init.players[2].getCap());
+							}
+							if(nbdujoueur == 3){
+								MouvJ4(couleurjchar,Init.players[3].getCap());
+							}
+							//MouvJ1(couleurjchar,Init.players[0].getCap());
+							//System.out.println("lol1");
+							tourjoue=1;
+							}
+					}
+					
+					
 					if (Init.plateau[x][y] != Init.players[1].getColor() && Init.plateau[x][y] != Init.players[0].getColor()&& Init.plateau[x][y] != Init.players[2].getColor() && Init.plateau[x][y] != Init.players[3].getColor() && aza != 0){
 							couleurjchar=Init.plateau[x][y];
 							if(nbdujoueur == 0){
@@ -250,9 +323,9 @@ public class Mov {
 		StdDraw.setPenColor(StdDraw.BLACK);
 		String tourdraw = "Tour "+tourj;
 		StdDraw.text(92,Init.size*102+254,tourdraw);
-		System.out.println("lol2");
+		//System.out.println("lol2");
 
-		System.out.println("lol3");
+		//System.out.println("lol3");
 		Init.players[0].setColor(Init.plateau[0][0]);
 		Init.players[1].setColor(Init.plateau[Init.size-1][Init.size-1]);
 		if(Init.nombredejoueurs == 3){
@@ -504,4 +577,60 @@ public class Mov {
 		Init.affgraph();
 	}
 		
+	public static void score () {
+		Main.caselibre = 0;
+		for (int i = 0; i<6;i++){
+			couleurdispo[i] = 0;
+		}
+		//Main.winj1=12345;
+		//Main.winj2=22777;
+		//Main.winj3=33000000;
+		//Main.winj4=1177;
+		int [] classement ={Main.winj1,Main.winj2,Main.winj3,Main.winj4};
+		Arrays.sort(classement);
+		premier = classement[3];
+		deuxieme = classement[2];
+		//System.out.println(classement[3]);// plus grand
+		//System.out.println(classement[2]);// deuxieme 
+		System.out.println(premier+"LOLOLO");// plus grand
+		System.out.println(deuxieme+"fffff");
+		for(int i = 0; i < Init.size; i++){
+	        for(int j = 0; j < Init.size; j++){
+	            if (Init.plateaucap[i][j] ==0){
+	            	Main.caselibre ++;
+	            }
+	        }
+	    }
+		for(int i = 0; i < Init.size; i++){
+	        for(int j = 0; j < Init.size; j++){
+	            if (Init.plateau[i][j] =='r'){
+	            	couleurdispo[0]++;
+	            }
+	            if (Init.plateau[i][j] =='o'){
+	            	couleurdispo[1]++;
+	            }
+	            if (Init.plateau[i][j] =='j'){
+	            	couleurdispo[2]++;
+	            }
+	            if (Init.plateau[i][j] =='v'){
+	            	couleurdispo[3]++;
+	            }
+	            if (Init.plateau[i][j] =='b'){
+	            	couleurdispo[4]++;
+	            }
+	            if (Init.plateau[i][j] =='i'){
+	            	couleurdispo[5]++;
+	            }
+	        }
+	    }
+		nbxcouleurdisparu=0;
+		for (int i = 0; i<6;i++){
+			if (couleurdispo[i]==0){
+				System.out.println("azertyuiop");
+				nbxcouleurdisparu++;
+			}
+		}
+		nbxcouleurdispo=0;
+		nbxcouleurdispo=6-nbxcouleurdisparu;
+	}
 }
