@@ -291,7 +291,7 @@ public class Mov {
 							}
 					}
 					
-					
+					/*
 					if (Init.plateau[x][y] != Init.players[1].getColor() && Init.plateau[x][y] != Init.players[0].getColor()&& Init.plateau[x][y] != Init.players[2].getColor() && Init.plateau[x][y] != Init.players[3].getColor() && aza != 0){
 							couleurjchar=Init.plateau[x][y];
 							if(nbdujoueur == 0){
@@ -309,7 +309,7 @@ public class Mov {
 							//MouvJ1(couleurjchar,Init.players[0].getCap());
 							//System.out.println("lol1");
 							tourjoue=1;
-							}
+							}*/
 					}
 				}
 		}
