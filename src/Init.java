@@ -1,5 +1,4 @@
 import java.awt.Color;
-import java.awt.Color;
 import java.awt.Font;
 import java.util.Random;
 import java.util.Scanner;
@@ -20,11 +19,26 @@ public class Init {
 	
 	static int size = 13;
 	
+	static int TXT_BAN = 202;
+	
+	static int CELL_WIDTH = 102;
+	
+	static int WINDOW_WIDTH = Init.size*CELL_WIDTH;
+	
+	static int WINDOW_HEIGHT = WINDOW_WIDTH + TXT_BAN;
+	
+	static int WINDOW_HEIGHT_REF = 13 * CELL_WIDTH + TXT_BAN;
+	
 	static char couleur[] = {'r','o','j','v','b','i'};
 	
 	static int[] reverseX;
 	
 	static int nombredejoueurs = 2;
+	
+	public static void rescale() {
+		WINDOW_WIDTH = Init.size*CELL_WIDTH;
+		WINDOW_HEIGHT = WINDOW_WIDTH + TXT_BAN;
+	}
 	
 	public static char[] getCouleur() {
 		return couleur;
@@ -49,6 +63,10 @@ public class Init {
 	
 	public static int getCellWidth() {
 		return Main.WINDOW_WIDTH / size;
+	}
+	
+	public static int getCellHeight() {
+		return WINDOW_HEIGHT / size;
 	}
 
 	public static void Initialisation (int CouG,int nbxP,int nbxIA){
@@ -291,6 +309,7 @@ public class Init {
 	affmaj();
 	}
 	public static void affgraph() {
+		
 		int CELL_WIDTH = getCellWidth();
 		int n = 0;
 		int m = 0;

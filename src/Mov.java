@@ -1,4 +1,6 @@
 import java.util.Arrays;
+import java.awt.Color;
+import java.awt.Font;
 import java.util.Random;
 import java.util.Scanner;
 
@@ -502,7 +504,80 @@ public class Mov {
 		Init.affgraph();*/
 	}
 		
-	
+	public static void banniere() {
+		Init.players[0].setColor(Init.plateau[0][0]);
+		Init.players[1].setColor(Init.plateau[Init.size-1][Init.size-1]);
+		if(Init.nombredejoueurs == 3){
+			Init.players[2].setColor(Init.plateau[0][Init.size-1]);
+		}
+		if (Init.nombredejoueurs == 4){
+			Init.players[2].setColor(Init.plateau[0][Init.size-1]);
+			Init.players[3].setColor(Init.plateau[Init.size-1][0]);
+		}
+		Init.affgraph();
+		StdDraw.setPenColor(StdDraw.LIGHT_GRAY);
+		StdDraw.filledRectangle(Init.WINDOW_HEIGHT/2,Init.WINDOW_HEIGHT-(2*45)/2,Init.WINDOW_HEIGHT/2 , 2*78);
+		StdDraw.setPenColor(StdDraw.BLACK);
+		StdDraw.setFont(new Font("Arial", Font.PLAIN, 18));
+		StdDraw.textLeft(30,Init.WINDOW_HEIGHT-100,"Tour "+Mov.tourj);
+		StdDraw.rectangle(5*Init.WINDOW_HEIGHT/8,Init.WINDOW_HEIGHT-110,3*Init.WINDOW_HEIGHT/8-30 , 80);
+		StdDraw.setFont(new Font("SansSerif", Font.PLAIN, 15));
+		StdDraw.setPenColor(StdDraw.LIGHT_GRAY);
+		StdDraw.filledRectangle(Init.WINDOW_HEIGHT/4+60,Init.WINDOW_HEIGHT-30,70 , 20);
+		StdDraw.setPenColor(StdDraw.BLACK);
+		StdDraw.textLeft(Init.WINDOW_HEIGHT/4+20,Init.WINDOW_HEIGHT-30 ,"Score");
+		StdDraw.setFont(new Font("SansSerif", Font.PLAIN, 16));
+		StdDraw.setPenColor(Init.getColorFromChar(Init.plateau[0][0]));
+		StdDraw.filledRectangle(4*Init.WINDOW_HEIGHT/8-40,Init.WINDOW_HEIGHT-70,Init.WINDOW_HEIGHT/8-30, 30);
+		if (Init.nombredejoueurs>2){
+			StdDraw.setPenColor(Init.getColorFromChar(Init.plateau[0][12]));
+			StdDraw.filledRectangle(4*Init.WINDOW_HEIGHT/8-40,Init.WINDOW_HEIGHT-140,Init.WINDOW_HEIGHT/8-30, 30);
+		}
+		StdDraw.setPenColor(Init.getColorFromChar(Init.plateau[0][12]));
+		StdDraw.filledRectangle(4*Init.WINDOW_HEIGHT/8-40,Init.WINDOW_HEIGHT-140,Init.WINDOW_HEIGHT/8-30, 30);
+		StdDraw.setPenColor(Init.getColorFromChar(Init.plateau[12][12]));
+		StdDraw.filledRectangle(6*Init.WINDOW_HEIGHT/8-40,Init.WINDOW_HEIGHT-70,Init.WINDOW_HEIGHT/8-30, 30);
+		if (Init.nombredejoueurs>2){
+			StdDraw.setPenColor(Init.getColorFromChar(Init.plateau[0][12]));
+			StdDraw.filledRectangle(4*Init.WINDOW_HEIGHT/8-40,Init.WINDOW_HEIGHT-140,Init.WINDOW_HEIGHT/8-30, 30);
+		}
+		if(Init.nombredejoueurs==2){
+			StdDraw.setPenColor(StdDraw.BLACK);
+			StdDraw.filledRectangle(4*Init.WINDOW_HEIGHT/8-40,Init.WINDOW_HEIGHT-140,Init.WINDOW_HEIGHT/8-30, 30);
+			StdDraw.setPenColor(StdDraw.BLACK);
+			StdDraw.filledRectangle(6*Init.WINDOW_HEIGHT/8-40,Init.WINDOW_HEIGHT-140,Init.WINDOW_HEIGHT/8-30, 30);
+		}
+		if(Init.nombredejoueurs==3){
+			StdDraw.setPenColor(StdDraw.BLACK);
+			StdDraw.filledRectangle(6*Init.WINDOW_HEIGHT/8-40,Init.WINDOW_HEIGHT-140,Init.WINDOW_HEIGHT/8-30, 30);
+		}
+		if (Init.nombredejoueurs>3){
+			StdDraw.setPenColor(Init.getColorFromChar(Init.plateau[12][0]));
+			StdDraw.filledRectangle(6*Init.WINDOW_HEIGHT/8-40,Init.WINDOW_HEIGHT-140,Init.WINDOW_HEIGHT/8-30, 30);
+		}
+		StdDraw.setPenColor(StdDraw.DARK_GRAY);
+		if (Mov.z == 0) StdDraw.filledCircle(3*Init.WINDOW_HEIGHT/8-40,Init.WINDOW_HEIGHT-70,20);
+		if (Mov.z == 2) StdDraw.filledCircle(3*Init.WINDOW_HEIGHT/8-40,Init.WINDOW_HEIGHT-140,20);
+		if (Mov.z == 1) StdDraw.filledCircle(5*Init.WINDOW_HEIGHT/8-40,Init.WINDOW_HEIGHT-70,20);
+		if (Mov.z == 3) StdDraw.filledCircle(5*Init.WINDOW_HEIGHT/8-40,Init.WINDOW_HEIGHT-140,20);
+		
+		StdDraw.setPenColor(StdDraw.BLACK);
+		if (Init.nombredejoueurs==4){
+			StdDraw.textLeft(Init.WINDOW_HEIGHT/4 +200,Init.WINDOW_HEIGHT-70 ,Init.players[0].getName()+":  " + Main.winj1 );
+			StdDraw.textLeft(Init.WINDOW_HEIGHT/4 +200,Init.WINDOW_HEIGHT-140 ,Init.players[2].getName()+":  " + Main.winj3 );
+			StdDraw.textLeft(2*Init.WINDOW_HEIGHT/4 +200,Init.WINDOW_HEIGHT-70 ,Init.players[1].getName()+":  " + Main.winj2 );
+			StdDraw.textLeft(2*Init.WINDOW_HEIGHT/4 +200,Init.WINDOW_HEIGHT-140 ,Init.players[3].getName()+":  " + Main.winj4 );
+		}
+		if (Init.nombredejoueurs==3){
+			StdDraw.textLeft(Init.WINDOW_HEIGHT/4 +200,Init.WINDOW_HEIGHT-70 ,Init.players[0].getName()+":  " + Main.winj1 );
+			StdDraw.textLeft(Init.WINDOW_HEIGHT/4 +200,Init.WINDOW_HEIGHT-140 ,Init.players[2].getName()+":  " + Main.winj3 );
+			StdDraw.textLeft(2*Init.WINDOW_HEIGHT/4 +200,Init.WINDOW_HEIGHT-70 ,Init.players[1].getName()+":  " + Main.winj2 );
+		}
+		if (Init.nombredejoueurs==2){
+			StdDraw.textLeft(Init.WINDOW_HEIGHT/4 +200,Init.WINDOW_HEIGHT-70 ,Init.players[0].getName()+":  " + Main.winj1 );
+			StdDraw.textLeft(2*Init.WINDOW_HEIGHT/4 +200,Init.WINDOW_HEIGHT-70 ,Init.players[1].getName()+":  " + Main.winj2 );
+		}
+	}
 	
 	public static void score () {
 		Main.caselibre = 0;

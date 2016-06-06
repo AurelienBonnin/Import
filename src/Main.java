@@ -34,14 +34,19 @@ public class Main {
 		Font font = new Font("Arial",0, 20);
 		StdDraw.setFont(font);
 		StdDraw.setPenColor(StdDraw.BLACK);
-		StdDraw.filledRectangle(50, 50, 20, 5);
+		StdDraw.setFont(new Font("Arial", Font.PLAIN, 50));
+		StdDraw.textLeft(25,80,"6 Couleurs");
+		StdDraw.filledRectangle(50, 50, 10, 5);
+		StdDraw.setFont(new Font("Arial", 0, 20));
 		StdDraw.setPenColor(StdDraw.WHITE);
 		StdDraw.text(50, 50, "Jouer");
+		StdDraw.setPenColor(StdDraw.LIGHT_GRAY);
+		StdDraw.textLeft(20,20,"VENKATRAMIAH & BONNIN   A1G9D");
 		while(true){
 			if (StdDraw.mousePressed()){
 				double x=StdDraw.mouseX();
 				double y=StdDraw.mouseY();
-				if (x > 30 && x < 70 && y > 45 && y < 55){
+				if (x > 40 && x < 60 && y > 45 && y < 55){
 					StdDraw.clear();
 					StdDraw.setPenColor(StdDraw.BLACK);
 					StdDraw.filledRectangle(20, 70, 20, 5);
@@ -221,37 +226,39 @@ public class Main {
 		StdDraw.setYscale(0, WINDOW_HEIGHT);
 		Init.Initialisation(1,Init.nombredejoueurs, 0);
 		Init.affgraph();
+		Mov.banniere();
+		/*
 		String tourdraw = "Tour "+Mov.tourj;
 		StdDraw.text(92,Init.size*102+254,tourdraw);
 		String scoredraw ="Score: "+Init.players[0].getName()+"   "+Main.winj1+"-"+Main.winj2+"   "+Init.players[1].getName();
 		StdDraw.text((Init.size-4)*102+22,Init.size*102+254,scoredraw);
 		String jouedraw =Init.players[0].getName()+", à votre tour quelle couleur voulez-vous jouer ?";
-		StdDraw.text((Init.size/2)*102+51,Init.size*102+152,jouedraw);
+		StdDraw.text((Init.size/2)*102+51,Init.size*102+152,jouedraw);*/
 		Mov.score();
 		while(Mov.premier <= Mov.deuxieme+Main.caselibre && Init.nombredejoueurs != Mov.nbxcouleurdispo){
 			Mov.z=0;
-			Mov.afficherscore();
+			Mov.banniere();
 			Mov.Mouvementgraphhumain(Mov.z);
 			Mov.score();
 			Mov.z=1;
-			Mov.afficherscore();
+			Mov.banniere();
 			Mov.Mouvementgraphhumain(Mov.z);
 			Mov.score();
 			if (Init.nombredejoueurs>2){
 				Mov.z=2;
-				Mov.afficherscore();
+				Mov.banniere();
 				Mov.Mouvementgraphhumain(Mov.z);
 				Mov.score();
 				if(Init.nombredejoueurs>3){
 					Mov.z=3;
-					Mov.afficherscore();
+					Mov.banniere();
 					Mov.Mouvementgraphhumain(Mov.z);
 					Mov.score();
 				}
 			}
 			Mov.tourj ++;
 		}
-		Mov.afficherscore();
+		Mov.banniere();
 		StdDraw.filledRectangle(WINDOW_WIDTH/2, WINDOW_HEIGHT/2, WINDOW_WIDTH/3, WINDOW_HEIGHT/3);
 		StdDraw.setPenColor(StdDraw.WHITE);
 		StdDraw.filledRectangle(WINDOW_WIDTH/2, WINDOW_HEIGHT/2, (WINDOW_WIDTH/3)-10, (WINDOW_HEIGHT/3)-10);
