@@ -1,4 +1,6 @@
 import java.awt.Color;
+import java.awt.Color;
+import java.awt.Font;
 import java.util.Random;
 import java.util.Scanner;
 
@@ -68,9 +70,6 @@ public class Init {
 			
 			inverse(size);
 		}
-		//Scanner scanname1 = new Scanner(System.in);
-		//System.out.println("Quel est le nom du joueur 1 ?");
-		//int name1=scanname1.nextInt();
 		if (nbxP == 2){
 			if (nbxIA == 2){
 				plateaucap[0][0]=1;
@@ -84,7 +83,7 @@ public class Init {
 				plateaucap[size-1][size-1]=2;
 				players[1] = new Player("IA 2",plateau[size-1][size-1],plateaucap[size-1][size-1]);
 			}
-			else{
+			if (nbxIA == 0){
 				plateaucap[0][0]=1;
 				players[0] = new Player("Player 1",plateau[0][0],plateaucap[0][0]);
 				plateaucap[size-1][size-1]=2;
@@ -119,7 +118,7 @@ public class Init {
 				plateaucap[0][size-1]=3;
 				players[2] = new Player("IA 3",plateau[0][size-1],plateaucap[0][size-1]);
 			}
-			else{
+			if (nbxIA == 0){
 				plateaucap[0][0]=1;
 				players[0] = new Player("Player 1",plateau[0][0],plateaucap[0][0]);
 				plateaucap[size-1][size-1]=2;
@@ -172,7 +171,7 @@ public class Init {
 				plateaucap[size-1][0]=4;
 				players[3] = new Player("IA 4",plateau[size-1][0],plateaucap[size-1][0]);
 			}
-			else{
+			if (nbxIA == 0){
 				plateaucap[0][0]=1;
 				players[0] = new Player("Player 1",plateau[0][0],plateaucap[0][0]);
 				plateaucap[size-1][size-1]=2;
@@ -187,83 +186,15 @@ public class Init {
 			Mov.MouvJ3(Init.plateau[0][Init.size-1],Init.players[2].getCap());
 			Mov.MouvJ4(Init.plateau[Init.size-1][0],Init.players[3].getCap());
 		}
-		//plateaucap[0][0]=1;
-		//players[0] = new Player("Player 1",plateau[0][0],plateaucap[0][0]);
-		
-		/*
-		System.out.println(players[0].getName());
-		System.out.println(players[1].getName());
-		System.out.println(players[2].getName());
-		System.out.println(players[3].getName());
-		*/
-		
-		
-		//System.out.println(plateau[0][0]);
-		//Scanner scanname2 = new Scanner(System.in);
-		//System.out.println("Quel est le nom du joueur 2 ?");
-		//int name2=scanname2.nextInt();
-		
-		
-		//plateaucap[size-1][size-1]=2;
-		//players[1] = new Player("Player 2",plateau[size-1][size-1],plateaucap[size-1][size-1]);
 		
 
 		JMaj(size);
-		//miseMaj();
 		
 		capmax = (int) ((size*size)/2);
-		//System.out.println(capmax);
-		//System.out.println(players[0].getName());
-		//System.out.println(players[1].getName());
 		
-		//Mov.MouvJ1(Init.plateau[0][0],Init.players[0].getCap());
-		//Mov.MouvJ2(Init.plateau[Init.size-1][Init.size-1],Init.players[1].getCap());
 		System.out.println("JEU INITIALISÉ");
-		//System.out.println("Tour 1");
-		//Init.affcap();
-		
-		//System.out.println(players[0].getCap());
-		
-		/*String tourdraw = "Tour "+Mov.tourj;
-		StdDraw.text(92,Init.size*102+254,tourdraw);
-		String scoredraw ="Score: "+Init.players[0].getName()+"   "+Main.winj1+"-"+Main.winj2+"   "+Init.players[1].getName();
-		StdDraw.text((Init.size-4)*102+22,Init.size*102+254,scoredraw);
-		String jouedraw =Init.players[0].getName()+", à votre tour quelle couleur voulez-vous jouer ?";
-		StdDraw.text((Init.size/2)*102+51,Init.size*102+152,jouedraw);*/
-		
-		
 	}
-	public static void InitialisationGraph (){
-		Jeu(size);
-		JCap(size);
-		
-		
-		plateaucap[0][0]=1;
-		players[0] = new Player("Player 1",plateau[0][0],plateaucap[0][0]);
 
-		
-		plateaucap[size-1][size-1]=2;
-		players[1] = new Player("Player 2",plateau[size-1][size-1],plateaucap[size-1][size-1]);
-		
-
-		//JMaj(size);
-		
-		capmax = (int) ((size*size)/2);
-		
-		Init.players[0].setColor(Init.plateau[0][0]);
-		Init.players[1].setColor(Init.plateau[Init.size-1][Init.size-1]);
-		
-		Mov.MouvJ1(Init.plateau[0][0],Init.players[0].getCap());
-		Mov.MouvJ2(Init.plateau[Init.size-1][Init.size-1],Init.players[1].getCap());
-		//System.out.println("JEU INITIALISÉ");
-		//System.out.println("Tour 1");
-		//Init.affcap();
-		
-		//System.out.println(players[0].getCap());
-		inverse(size);
-		//affreverseX();
-		//System.out.println("");
-	}
 	public static void Jeu(int size) {
 		plateau = new char[size][size];
 		for(int i = 0; i < size; i++) {
@@ -376,7 +307,6 @@ public class Init {
 					String z = "" +plateaucap[n][m];
 					StdDraw.text(x, y, z);
 				}
-				//w++;
 				m++;
 			}
 			m=0;

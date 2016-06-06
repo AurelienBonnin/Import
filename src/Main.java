@@ -129,72 +129,15 @@ public class Main {
 			System.out.println("Bravo Vous avez gagné "+Init.players[1].getName()+",");
 			System.out.println("vous avez capturé plus de la moitié des pions ! :)");
 		}
-		//if (winj1==Init.getCapmax() && winj2==Init.getCapmax()){
-			//Init.miseMaj();
-			//System.out.println();
-			//System.out.println("SCORE FINAL");
-			//System.out.println(Init.players[0].getName()+"   "+Main.winj1+"-"+Main.winj2+"   "+Init.players[1].getName());
-			//System.out.println("Bravo "+Init.players[0].getName()+"&"+Init.players[1].getName()+", l'égalité est parfaite");
-			//System.out.println("Peut-être une autre partie pour vous départager ? :)");
-		//}
 	}
-	public static void graph1vs1(){
-		StdDraw.clear();
-		StdDraw.setXscale(0, WINDOW_WIDTH);
-		StdDraw.setYscale(0, WINDOW_HEIGHT);
-		Init.InitialisationGraph();
-		Init.JMaj(Init.size);//
-		//Init.miseMaj();//
-		Init.affgraph();
-		String tourdraw = "Tour "+Mov.tourj;
-		StdDraw.text(92,Init.size*102+254,tourdraw);
-		String scoredraw ="Score: "+Init.players[0].getName()+"   "+Main.winj1+"-"+Main.winj2+"   "+Init.players[1].getName();
-		StdDraw.text((Init.size-4)*102+22,Init.size*102+254,scoredraw);
-		String jouedraw =Init.players[0].getName()+", à votre tour quelle couleur voulez-vous jouer ?";
-		StdDraw.text((Init.size/2)*102+51,Init.size*102+152,jouedraw);
-		Init.affgraph();
-		//System.out.println(Init.plateau.length);
-		//System.out.println(Init.size);
-		while (winj1<=Init.getCapmax() && winj2<=Init.getCapmax() ){
-			//System.out.println("lol");
-			Mov.Mouvementgraph();
-			Mov.score();
-		}
-		if (winj1>Init.getCapmax()){
-			
-			StdDraw.filledRectangle(WINDOW_WIDTH/2, WINDOW_HEIGHT/2, WINDOW_WIDTH/3, WINDOW_HEIGHT/3);
-			StdDraw.setPenColor(StdDraw.WHITE);
-			StdDraw.filledRectangle(WINDOW_WIDTH/2, WINDOW_HEIGHT/2, (WINDOW_WIDTH/3)-10, (WINDOW_HEIGHT/3)-10);
-			StdDraw.setPenColor(StdDraw.BLACK);
-			String win1txt= "Bravo, "+Init.players[0].getName()+" a gagné !";
-			StdDraw.text(WINDOW_WIDTH/2, WINDOW_HEIGHT/2, win1txt);
-		}
-		if (winj2>Init.getCapmax()){
-			StdDraw.filledRectangle(WINDOW_WIDTH/2, WINDOW_HEIGHT/2, WINDOW_WIDTH/3, WINDOW_HEIGHT/3);
-			StdDraw.setPenColor(StdDraw.WHITE);
-			StdDraw.filledRectangle(WINDOW_WIDTH/2, WINDOW_HEIGHT/2, (WINDOW_WIDTH/3)-10, (WINDOW_HEIGHT/3)-10);
-			StdDraw.setPenColor(StdDraw.BLACK);
-			String win2txt= "Bravo, "+Init.players[1].getName()+" a gagné !";
-			StdDraw.text(WINDOW_WIDTH/2, WINDOW_HEIGHT/2, win2txt);
-		}
-		//if (winj1==Init.getCapmax() && winj2==Init.getCapmax()){
-			//Init.miseMaj();
-			//System.out.println();
-			//System.out.println("SCORE FINAL");
-			//System.out.println(Init.players[0].getName()+"   "+Main.winj1+"-"+Main.winj2+"   "+Init.players[1].getName());
-			//System.out.println("Bravo "+Init.players[0].getName()+"&"+Init.players[1].getName()+", l'égalité est parfaite");
-			//System.out.println("Peut-être une autre partie pour vous départager ? :)");
-		//}
-	}
+	
 	
 	public static void graph1vsIA(){
 		StdDraw.clear();
 		StdDraw.setXscale(0, WINDOW_WIDTH);
 		StdDraw.setYscale(0, WINDOW_HEIGHT);
 		Init.Initialisation(1, 2, 1);
-		//Init.InitialisationGraph();
-		Init.JMaj(Init.size);//
-		//Init.miseMaj();//
+		Init.JMaj(Init.size);
 		Init.affgraph();
 		String tourdraw = "Tour "+Mov.tourj;
 		StdDraw.text(92,Init.size*102+254,tourdraw);
@@ -203,10 +146,7 @@ public class Main {
 		String jouedraw =Init.players[0].getName()+", à votre tour quelle couleur voulez-vous jouer ?";
 		StdDraw.text((Init.size/2)*102+51,Init.size*102+152,jouedraw);
 		Init.affgraph();
-		//System.out.println(Init.plateau.length);
-		//System.out.println(Init.size);
 		while (winj1<=Init.getCapmax() && winj2<=Init.getCapmax() ){
-			//System.out.println("lol");
 			
 			Mov.z=0;
 			Mov.afficherscore();
@@ -215,8 +155,6 @@ public class Main {
 			Mov.z=1;
 			Mov.IAleatoire(2);
 			Mov.tourj ++;
-			//Mov.afficherscore();
-			System.out.println(winj1);
 		}
 		if (winj1>Init.getCapmax()){
 			
@@ -236,14 +174,12 @@ public class Main {
 			StdDraw.text(WINDOW_WIDTH/2, WINDOW_HEIGHT/2, win2txt);
 		}
 	}
+	
 	public static void graphIAvsIA(){
 		StdDraw.clear();
 		StdDraw.setXscale(0, WINDOW_WIDTH);
 		StdDraw.setYscale(0, WINDOW_HEIGHT);
 		Init.Initialisation(1, 2, 2);
-		//Init.InitialisationGraph();
-		Init.JMaj(Init.size);//
-		//Init.miseMaj();//
 		Init.affgraph();
 		String tourdraw = "Tour "+Mov.tourj;
 		StdDraw.text(92,Init.size*102+254,tourdraw);
@@ -251,21 +187,15 @@ public class Main {
 		StdDraw.text((Init.size-4)*102+22,Init.size*102+254,scoredraw);
 		String jouedraw =Init.players[0].getName()+", à votre tour quelle couleur voulez-vous jouer ?";
 		StdDraw.text((Init.size/2)*102+51,Init.size*102+152,jouedraw);
-		Init.affgraph();
-		//System.out.println(Init.plateau.length);
-		//System.out.println(Init.size);
 		while (winj1<=Init.getCapmax() && winj2<=Init.getCapmax() ){
-			//System.out.println("lol");
 			
 			Mov.z=0;
 			Mov.afficherscore();
 			Mov.IAleatoire(1);
-			Mov.afficherscore();
 			Mov.z=1;
+			Mov.afficherscore();
 			Mov.IAleatoire(2);
 			Mov.tourj ++;
-			//Mov.afficherscore();
-			System.out.println(winj1);
 		}
 		if (winj1>Init.getCapmax()){
 			
@@ -285,8 +215,7 @@ public class Main {
 			StdDraw.text(WINDOW_WIDTH/2, WINDOW_HEIGHT/2, win2txt);
 		}
 	}
-	////
-	public static void test4j(){/////faire condition de fin 
+	public static void test4j(){
 		StdDraw.clear();
 		StdDraw.setXscale(0, WINDOW_WIDTH);
 		StdDraw.setYscale(0, WINDOW_HEIGHT);
@@ -320,16 +249,6 @@ public class Main {
 					Mov.score();
 				}
 			}
-			/*
-			Mov.z=2;
-			Mov.afficherscore();
-			Mov.Mouvementgraphhumain(Mov.z);
-			Mov.score();
-			Mov.z=3;
-			Mov.afficherscore();
-			Mov.Mouvementgraphhumain(Mov.z);
-			Mov.score();
-			*/
 			Mov.tourj ++;
 		}
 		Mov.afficherscore();
@@ -337,13 +256,6 @@ public class Main {
 		StdDraw.setPenColor(StdDraw.WHITE);
 		StdDraw.filledRectangle(WINDOW_WIDTH/2, WINDOW_HEIGHT/2, (WINDOW_WIDTH/3)-10, (WINDOW_HEIGHT/3)-10);
 		StdDraw.setPenColor(StdDraw.BLACK);
-		//String win1txt= "Bravo, "+nomdujoueur+" a gagné !";
-		/*System.out.println("Preum's "+Mov.premier);
-		System.out.println(winj1);
-		System.out.println(winj2);
-		System.out.println(winj3);
-		System.out.println(winj4);
-		*/
 		if(Mov.premier==winj1){
 			nomdujoueur=Init.players[0].getName();
 		}
@@ -358,41 +270,19 @@ public class Main {
 		}
 		String win1txt= "Bravo, "+nomdujoueur+" a gagné !";
 		StdDraw.text(WINDOW_WIDTH/2, WINDOW_HEIGHT/2, win1txt);
-	}
-	
-	
-	public static void Graph3j(){/////faire condition de fin 
-		StdDraw.clear();
-		StdDraw.setXscale(0, WINDOW_WIDTH);
-		StdDraw.setYscale(0, WINDOW_HEIGHT);
-		Init.nombredejoueurs = 3;
-		Init.Initialisation(1,Init.nombredejoueurs, 0);
-		Init.affgraph();
-		String tourdraw = "Tour "+Mov.tourj;
-		StdDraw.text(92,Init.size*102+254,tourdraw);
-		String scoredraw ="Score: "+Init.players[0].getName()+"   "+Main.winj1+"-"+Main.winj2+"   "+Init.players[1].getName();
-		StdDraw.text((Init.size-4)*102+22,Init.size*102+254,scoredraw);
-		String jouedraw =Init.players[0].getName()+", à votre tour quelle couleur voulez-vous jouer ?";
-		StdDraw.text((Init.size/2)*102+51,Init.size*102+152,jouedraw);
+		StdDraw.setPenColor(StdDraw.BLACK);
+		StdDraw.filledRectangle(WINDOW_WIDTH/2, WINDOW_HEIGHT/2 - 400, 250, 75);
+		StdDraw.setPenColor(StdDraw.WHITE);
+		StdDraw.text(WINDOW_WIDTH/2, WINDOW_HEIGHT/2 - 400, "menu");
 		while(true){
-			Mov.z=0;
-			Mov.afficherscore();
-			Mov.Mouvementgraphhumain(Mov.z);
-			Mov.z=1;
-			Mov.afficherscore();
-			Mov.Mouvementgraphhumain(Mov.z);
-			Mov.z=2;
-			Mov.afficherscore();
-			Mov.Mouvementgraphhumain(Mov.z);
-			Mov.z=3;
-			Mov.afficherscore();
-			
-			Mov.tourj ++;
+			if (StdDraw.mousePressed()){
+				double x=StdDraw.mouseX();
+				double y=StdDraw.mouseY();
+				if (x > (WINDOW_WIDTH/2)-250 && x < (WINDOW_WIDTH/2)+250 && y > (WINDOW_HEIGHT/2 - 400)-75 && y < (WINDOW_HEIGHT/2 - 400)+75){
+					StdDraw.clear();
+					menu();
+				}
+		}
 		}
 	}
-	
-	
-	
-	////////////////////////////////
-	
 }
